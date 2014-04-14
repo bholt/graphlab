@@ -217,7 +217,7 @@ int main(int argc, char** argv) {
     // make sure this is the synchronous engine
     dc.cout() << "--iterations set. Forcing Synchronous engine, and running "
               << "for " << ITERATIONS << " iterations." << std::endl;
-    clopts.get_engine_args().set_option("type", "synchronous");
+    clopts.get_engine_args().set_option("type", std::string("synchronous"));
     clopts.get_engine_args().set_option("max_iterations", ITERATIONS);
     clopts.get_engine_args().set_option("sched_allv", true);
   }
