@@ -192,7 +192,11 @@ int main(int argc, char** argv) {
   engine.signal_all();
   time(&start);
   engine.start();
-
+  
+  const double runtime = engine.elapsed_seconds();
+  dc.cout() << "Finished Running engine in " << runtime
+            << " seconds." << std::endl;
+  
   //write results
   if (saveprefix.size() > 0) {
     graph.save(saveprefix, graph_writer(),
