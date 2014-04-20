@@ -9,11 +9,11 @@ Igor do
     --time=1:00:00
   ]
   
-  database '~/osdi.sqlite', :pagerank
+  database '~/osdi.sqlite', :cc
   
   path = File.expand_path(File.dirname(__FILE__)) + "/release/toolkits/graph_analytics"
   
-  command "source ~/graphlab.env.sh; mpirun #{path}/pagerank --graph /pic/projects/grappa/twitter/bintsv4/twitter-all.bintsv4 --format bintsv4 --graph_opts='%{graph_opts}' --iterations=%{iterations}"
+  command "source ~/graphlab.env.sh; mpirun #{path}/connected_component --graph /pic/projects/grappa/twitter/bintsv4/twitter-all.bintsv4 --format bintsv4 --graph_opts='%{graph_opts}'"
   
   params {
     dataset 'twitter'
@@ -21,7 +21,6 @@ Igor do
     ppn 1
     nnode 16
     graph_opts 'ingress=oblivious,usehash=1'
-    iterations 0
   }
   
   parser {|out|
