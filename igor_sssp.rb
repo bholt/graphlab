@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'igor'
+require_relative 'igor_common'
 
 Igor do
   
@@ -9,7 +10,7 @@ Igor do
     --time=1:00:00
   ]
   
-  database '~/osdi.sqlite', :pagerank
+  database '~/osdi.sqlite', :sssp
   
   path = File.expand_path(File.dirname(__FILE__)) + "/release/toolkits/graph_analytics"
   
