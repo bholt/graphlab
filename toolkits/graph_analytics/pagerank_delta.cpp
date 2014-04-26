@@ -110,6 +110,8 @@ public:
     // to maintain the delta cache or the tolerance is above bound.
     if(std::fabs(last_change * vertex.num_out_edges()) > TOLERANCE ) {
       return graphlab::OUT_EDGES;
+    } else {
+      return graphlab::NO_EDGES;
     }
   }
 
