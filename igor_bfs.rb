@@ -10,14 +10,14 @@ Igor do
     --time=2:00:00
   ]
   
-  database '~/osdi.sqlite', :sssp
+  database '~/osdi.sqlite', :bfs
   
   path = File.expand_path(File.dirname(__FILE__)) + "/release/toolkits/graph_analytics"
   
   command "source ~/graphlab.env.sh; mpirun #{path}/%{exe} --graph /pic/projects/grappa/twitter-multi/bintsv4/ --format bintsv4 --graph_opts='%{graph_opts}' --max_degree_source=1 "
   
   params {
-    exe 'sssp'
+    exe 'bfs'
     dataset 'twitter'
     version 'graphlab'
     ppn 1

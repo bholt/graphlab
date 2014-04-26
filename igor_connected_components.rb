@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'igor'
+require_relative 'igor_common'
 
 Igor do
   
@@ -13,7 +14,7 @@ Igor do
   
   path = File.expand_path(File.dirname(__FILE__)) + "/release/toolkits/graph_analytics"
   
-  command "source ~/graphlab.env.sh; mpirun #{path}/connected_component --graph /pic/projects/grappa/twitter/bintsv4/twitter-all.bintsv4 --format bintsv4 --graph_opts='%{graph_opts}'"
+  command "source ~/graphlab.env.sh; mpirun #{path}/connected_component --graph /pic/projects/grappa/twitter-multi/bintsv4/ --format bintsv4 --graph_opts='%{graph_opts}'"
   
   params {
     dataset 'twitter'
