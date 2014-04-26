@@ -14,9 +14,11 @@ Igor do
   
   path = File.expand_path(File.dirname(__FILE__)) + "/release/toolkits/graph_analytics"
   
-  command "source ~/graphlab.env.sh; mpirun #{path}/%{exe} --graph /pic/projects/grappa/twitter-multi/bintsv4/ --format bintsv4 --graph_opts='%{graph_opts}' --iterations=%{iterations}"
+  command "source ~/graphlab.env.sh; mpirun #{path}/%{exe} --graph %{path} --format bintsv4 --graph_opts='%{graph_opts}' --iterations=%{iterations}"
   
   params {
+    multi false
+    path expr("multi ? '/pic/projects/grappa/twitter-multi/bintsv4/' : '/pic/projects/grappa/twitter/bintsv4/twitter-all.bintsv4'")
     exe 'pagerank'
     dataset 'twitter'
     version 'graphlab'
