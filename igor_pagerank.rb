@@ -19,7 +19,7 @@ Igor do
   params {
     multi false
     path expr("multi ? '/pic/projects/grappa/twitter-multi/bintsv4/' : '/pic/projects/grappa/twitter/bintsv4/twitter-all.bintsv4'")
-    exe 'pagerank'
+    exe 'pagerank_delta'
     dataset 'twitter'
     version 'graphlab'
     ppn 1

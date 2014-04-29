@@ -21,4 +21,9 @@ Igor do
     end
   end
   
+  $twitter = '/pic/projects/grappa/twitter/bintsv4/twitter-all.bintsv4'
+  $twitter_multi = '/pic/projects/grappa/twitter-multi/bintsv4/'
+  $friendster = '/pic/projects/grappa/friendster/bintsv4/friendster.bintsv4'
+  $friendster_multi = '/pic/projects/grappa/friendster/multi-bintsv4/'
+  
 end
