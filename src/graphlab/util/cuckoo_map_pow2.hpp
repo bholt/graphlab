@@ -379,7 +379,7 @@ namespace graphlab {
       drng(time(NULL)),
       kranddist(0, CuckooK - 1), hashfun(h), keyeq(k), mask(127) {
       stash.max_load_factor(1.0);
-      reserve(128);
+      reserve(256);
     }
 
     const key_type& illegal_key() const {
@@ -629,7 +629,7 @@ namespace graphlab {
 
     void clear() {
       destroy_all();
-      reserve(128);
+      reserve(256);
     }
 
 

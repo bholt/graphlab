@@ -37,7 +37,7 @@
   \def RPC_MAX_N_PROCS
   \brief Maximum number of processes supported
  */
-#define RPC_MAX_N_PROCS 128
+#define RPC_MAX_N_PROCS 256
 
 /**
  * \ingroup RPC

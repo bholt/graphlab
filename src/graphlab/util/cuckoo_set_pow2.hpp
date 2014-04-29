@@ -359,7 +359,7 @@ namespace graphlab {
 
     cuckoo_set_pow2(key_type illegalkey,
                     index_type stashsize = 8,
-                    index_type reserve_size = 128,
+                    index_type reserve_size = 256,
                     hasher const& h = hasher(),
                     key_equal const& k = key_equal()):
       illegalkey(illegalkey),

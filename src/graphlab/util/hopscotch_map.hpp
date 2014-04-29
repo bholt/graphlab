@@ -429,7 +429,7 @@ namespace graphlab {
 
     void clear() {
       destroy_all();
-      container = create_new_container(128);
+      container = create_new_container(256);
     }
 
 

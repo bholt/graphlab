@@ -373,7 +373,7 @@ public:
               drng(time(NULL)),
               kranddist(0, CuckooK - 1), hashfun(h), keyeq(k) {
     stash.max_load_factor(1.0);
-    reserve(128);
+    reserve(256);
   }
 
 
@@ -615,7 +615,7 @@ public:
 
   void clear() {
     destroy_all();
-    reserve(128);
+    reserve(256);
   }
 
 
