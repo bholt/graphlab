@@ -26,4 +26,22 @@ Igor do
   $friendster = '/pic/projects/grappa/friendster/bintsv4/friendster.bintsv4'
   $friendster_multi = '/pic/projects/grappa/friendster/multi-bintsv4/'
   
+  parser {|out|
+    h = {}
+    out.gsub(/Finished Running engine in (#{REG_NUM}) seconds\./){ h[:time] = $~[1] }    
+    out.gsub(/nverts: (\d+)\s*\n\s*nedges: (\d+)\s*\n\s*nreplicas: (\d+)\s*\n\s*replication factor: (#{REG_NUM})/){
+      h[:nverts] = $~[1]
+      h[:nedges] = $~[2]
+      h[:nreplicas] = $~[3]
+      h[:replication_factor] = $~[4]
+    }
+    out.gsub(/(\d+) iterations completed\./){ h[:iterations_run] = $~[1].to_i }
+    out.gsub( /total_bytes_sent: (#{REG_NUM}) GB\ntotal_network_bytes_sent: (#{REG_NUM}) GB\ntotal_msgs_sent: (#{REG_NUM})/){
+      h[:total_sent_gb] = $~[1].to_f
+      h[:total_network_sent_gb] = $~[2].to_f
+      h[:total_msgs_sent] = $~[3].to_f
+    }
+    h
+  }
+  
 end
