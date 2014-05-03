@@ -232,7 +232,15 @@ int main(int argc, char** argv) {
 
   // Initialize the vertex data
   graph.transform_vertices(init_vertex);
-
+  
+  
+  size_t before_bytes_sent = dc.bytes_sent();
+  dc.all_reduce(before_bytes_sent);
+  size_t before_network_bytes_sent = dc.network_bytes_sent();
+  dc.all_reduce(before_network_bytes_sent);
+  size_t before_msgs_sent = dc.calls_sent();
+  dc.all_reduce(before_msgs_sent);
+  
   // Running The Engine -------------------------------------------------------
   graphlab::omni_engine<pagerank> engine(dc, graph, exec_type, clopts);
   engine.signal_all();
@@ -254,7 +262,23 @@ int main(int argc, char** argv) {
 
   double totalpr = graph.map_reduce_vertices<double>(pagerank_sum);
   std::cout << "Totalpr = " << totalpr << "\n";
-
+  
+  size_t GB = (1L<<30);
+  size_t total_bytes_sent = dc.bytes_sent();
+  dc.all_reduce(total_bytes_sent);
+  size_t total_network_bytes_sent = dc.network_bytes_sent();
+  dc.all_reduce(total_network_bytes_sent);
+  size_t total_msgs_sent = dc.calls_sent();
+  dc.all_reduce(total_msgs_sent);
+  
+  dc.cout() << "\n"
+    << "total_bytes_sent: "
+      << static_cast<double>(total_bytes_sent - before_bytes_sent) / GB << " GB\n"
+    << "total_network_bytes_sent: "
+      << static_cast<double>(total_network_bytes_sent - before_network_bytes_sent) / GB << " GB\n"
+    << "total_msgs_sent: "
+      << static_cast<double>(total_msgs_sent - before_msgs_sent) << "\n";
+  
   // Tear-down communication layer and quit -----------------------------------
   graphlab::mpi_tools::finalize();
   return EXIT_SUCCESS;
