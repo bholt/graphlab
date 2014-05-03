@@ -151,7 +151,7 @@ int main(int argc, char** argv) {
 
   graphlab::mpi_tools::init(argc, argv);
   graphlab::distributed_control dc;
-  global_logger().set_log_level(LOG_DEBUG);
+  // global_logger().set_log_level(LOG_DEBUG);
   //parse options
   graphlab::command_line_options clopts("Connected Component.");
   std::string graph_dir;
